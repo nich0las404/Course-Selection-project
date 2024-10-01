@@ -13,7 +13,9 @@ body {
   overflow-x: hidden;
   color: white;
 }
-
+button{
+  cursor: pointer;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

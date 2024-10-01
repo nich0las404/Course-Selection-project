@@ -5,7 +5,7 @@ function Navbar(){
         <div className="navbar-container">
             <nav>
                 <ul class='nav-bar'>
-                    <li class='logo'><img src={logo}/></li>
+                    <li class='nav-logo'><img className='nav-logo-img' src={logo}/></li>
                     <input type='checkbox' id='check' />
                     <span class="menu">
                         <li><a href="">Home</a></li>
