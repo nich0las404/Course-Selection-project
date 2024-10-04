@@ -3,7 +3,7 @@ import Testimonials from "./testimonials";
 
 function aboutPage(){
     return(
-        <div className="about-page">
+        <div id="about-section">
             <CodingFacts/>
             <Testimonials/>
         </div>

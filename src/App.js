@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
-import HeroPage from './Homepage-ui/hero-page';
-import Navbar from './Homepage-ui/navbar';
-import AboutPage from './Homepage-ui/About';
-import FooterPage from './Homepage-ui/footerPage';
-import { BrowserRouter, Router, Route } from 'react-router-dom';
+import HomePage from './HomePage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import MainContent from './Content';
+
 function App() {
   return (
-    <div>
-      <Navbar/>
-      <HeroPage/>
-      <AboutPage />
-      <FooterPage/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<HomePage/>}/>
+        <Route path='/main' element={<MainContent/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
