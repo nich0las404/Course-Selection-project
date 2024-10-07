@@ -154,7 +154,7 @@ function HeroContent(){
             ]
         },
         {
-            img: 'https://s3-us-west-2.amazonaws.com/cbi-image-service-prd/modified/41396ed0-38a6-4672-a849-2ccd07861129.png',
+            img: simplilearn,
             desc: "Simplilearn offers a blend of self-paced and instructor-led training in various tech domains, aiming to equip learners with industry-recognized certifications and skills that enhance career opportunities.",
             website: "https://www.simplilearn.com/",
             companyTitle: "Simplilearn",
@@ -191,7 +191,7 @@ function HeroContent(){
             img: mit2,
             desc: "MIT OpenCourseWare provides free and open access to a wide array of MIT's course materials, empowering learners worldwide with rigorous, high-level education in various domains of computer science and programming.",
             website: "https://ocw.mit.edu/",
-            companyTitle: "MIT OpenCourseWare",
+            companyTitle: "MIT OpenCourse",
             types: [
                 "Python", 
                 "C", 

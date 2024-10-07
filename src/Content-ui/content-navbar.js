@@ -1,7 +1,12 @@
 import logo from '../images/logo.png'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 function ContentNavbar(){
     const navigate = useNavigate();
+
+    const handleNav = (e, path) => {
+        e.preventDefault();
+        navigate(path)
+    }
     return (
         <div className="navbar-container">
             <nav>
@@ -9,8 +14,8 @@ function ContentNavbar(){
                     <li class='nav-logo'><img className='nav-logo-img' src={logo}/></li>
                     <input type='checkbox' id='check' />
                     <span class="menu">
-                        <li><a href={() => {navigate('/')}}>Home</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href='/' onClick={(e) => handleNav(e, '/')}>Home</a></li>
+                        <li><Link to={`/main/#contact-container`}>Contact</Link></li>
                         <label for="check" class="close-menu"><i class="fas fa-times"></i></label>
                     </span>
                     <label for="check" class="open-menu"><i class="fas fa-bars"></i></label>

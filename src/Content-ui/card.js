@@ -1,8 +1,7 @@
-
+import { Link } from "react-router-dom";
 function Card({course}){
     return (
-        <a target="_blank" href={course.website} className="cards-link-container" href="">
-            <div className="card-container">
+        <Link className="card-container" to={`/course/${course.companyTitle.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}>
             <div className="upper-card-container">
                 <div className="card-img-container">
                 <img className="card-img" src={course.img} alt={course.companyTitle}/>
@@ -15,11 +14,10 @@ function Card({course}){
             <p className="card-desc">{course.desc}</p>
             <div className="card-languages-container">
                 {course.types.map((type, index) => (
-                            <p key={index} className={`card-language ${type.toLowerCase().replace(/\s+/g, '-')}`}>{type}</p>
-                        ))}
+                    <p key={index} className={`card-language ${type.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '-')}`}>{type}</p>
+                ))}
             </div>
-        </div>
-        </a>
+        </Link>
     )
 }
 export default Card;

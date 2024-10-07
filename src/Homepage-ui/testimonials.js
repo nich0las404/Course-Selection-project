@@ -6,6 +6,8 @@ import ztm from '../logos/ZTM-logo.png'
 import udemy from '../logos/Udemy-Logo.png'
 import harvard from '../logos/HARVARD-logo.png'
 import odin_project from '../logos/odin-project-logo.png'
+
+import { useEffect, useState } from 'react'
 function Testimonials(){
     const people = [
         {
@@ -45,6 +47,9 @@ function Testimonials(){
             testi: "\"I started with no coding experience, and Zero to Hero’s course laid everything out in a simple, step-by-step process. I followed the curriculum, built real-world projects, and now I’m working at Shopify! I wouldn’t have made it this far without the clear structure and practical experience the course provided.\""
         }
     ];
+    // Animation section
+    const [testiTitleText, setTestiTitleText] = useState('');
+    
     return(
         <div>
         <div className="testi-title-container">

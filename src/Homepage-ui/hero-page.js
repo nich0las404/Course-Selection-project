@@ -1,14 +1,35 @@
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function HeroPage(){
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [heroTitle, setHeroTitle] = useState('');
 
+    useEffect(() => {
+        function textTypingEffect(text,i = 0){
+            if(i === 0){
+                setHeroTitle('')
+            }
+
+            setHeroTitle(text.substring(0, i + 1));
+      
+            if(i === text.length - 1){
+              return;
+            }
+            // Final execution animation
+            setTimeout(
+              () => textTypingEffect(text, i + 1)
+              , 80
+            );
+        };
+            textTypingEffect('Your journey starts');
+    }, []);
     return (
         <div id="hero-section" className="hero-page">
             <div className="inner-hero-page">
-            <div className="gif-background"></div>
+            <div className="gif-background hero-background-animation"></div>
             <div className="title-container">
-                <h1 className="title">your journey starts <span className="title-span">here</span></h1>
+                <h1 className="title">{heroTitle}<span className="title-span"> here</span></h1>
             </div>
             </div>
             <div className="btn-container">
