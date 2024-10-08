@@ -4,7 +4,6 @@ function CodingFacts(){
     const ref = useRef(null);
     const [hasAnimated, setHasAnimated] = useState(false);
     const [why, setWhy] = useState('');
-    const [heroTitle, setHeroTitle] = useState('');
 
     const [fact1Visible, setFact1Visible] = useState(false);
     const [fact2Visible, setFact2Visible] = useState(false);
@@ -26,7 +25,7 @@ function CodingFacts(){
             const entry = entries[0];
             if (entry.isIntersecting && !hasAnimated) {
               setHasAnimated(true);  
-              textTypingEffect('Why?')
+              textTypingEffect('Why?');
               observer.unobserve(ref.current); 
             }
           },
@@ -55,7 +54,7 @@ function CodingFacts(){
       // Final execution animation
       setTimeout(
         () => textTypingEffect('Why?', i + 1)
-        ,500
+        ,200
       )
     };
 

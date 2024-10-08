@@ -7,7 +7,7 @@ import udemy from '../logos/Udemy-Logo.png'
 import harvard from '../logos/HARVARD-logo.png'
 import odin_project from '../logos/odin-project-logo.png'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 function Testimonials(){
     const people = [
         {
@@ -49,16 +49,70 @@ function Testimonials(){
     ];
     // Animation section
     const [testiTitleText, setTestiTitleText] = useState('');
-    
+    const [testiContainer, setTestiContainer] = useState(false);
+
+    const ref = useRef(null);
+    const testiContainerRef = useRef(null);
+
+    useEffect(() => {
+      const observerTitle = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !testiTitleText) {
+          textTypingEffect('What are you waiting for?');
+          observerTitle.unobserve(ref.current);
+        }
+      }, {
+        threshold: 0.2
+      });
+  
+      if (ref.current) {
+        observerTitle.observe(ref.current);
+      }
+  
+      const observerTestiContainer = new IntersectionObserver((entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting && !testiContainer) {
+          setTestiContainer(true); // set to true when testimonials-container is visible
+          observerTestiContainer.unobserve(testiContainerRef.current);
+        }
+      }, {
+        threshold: 0.2
+      });
+  
+      if (testiContainerRef.current) {
+        observerTestiContainer.observe(testiContainerRef.current);
+      }
+  
+      return () => {
+        if (ref.current) {
+          observerTitle.unobserve(ref.current);
+        }
+        if (testiContainerRef.current) {
+          observerTestiContainer.unobserve(testiContainerRef.current);
+        }
+      };
+  
+      // TYPING ANIMATION
+      function textTypingEffect(text, i = 0) {
+        if (i === 0) {
+          setTestiTitleText('');
+        }
+        setTestiTitleText(text.substring(0, i + 1));
+        if (i === text.length - 1) {
+          return;
+        }
+        setTimeout(() => textTypingEffect(text, i + 1), 80);
+      }
+    }, [testiTitleText, testiContainer]);
     return(
         <div>
         <div className="testi-title-container">
             <div className="short-horizontal-line short-hori-line2"></div>
             <div className="line line2"></div>
-            <h1 className="testi-title">What are you waiting for?</h1>
+            <h1 className="testi-title" ref={ref}>{testiTitleText}</h1>
 
-            <div className='testimonials-container'>
-            <div className='testimonial-container'>
+            <div className='testimonials-container' ref={testiContainerRef}>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate1': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[0].img}/>
                     <div className='inner-profile-testi-container'>
@@ -70,7 +124,7 @@ function Testimonials(){
                     {people[0].testi}
                 </p>
             </div>
-            <div className='testimonial-container'>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate2': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[1].img}/>
                     <div className='inner-profile-testi-container'>
@@ -82,7 +136,7 @@ function Testimonials(){
                     {people[1].testi}
                 </p>
             </div>
-            <div className='testimonial-container'>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate3': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[2].img}/>
                     <div className='inner-profile-testi-container'>
@@ -94,7 +148,7 @@ function Testimonials(){
                     {people[2].testi}
                 </p>
             </div>
-            <div className='testimonial-container'>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate4': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[3].img}/>
                     <div className='inner-profile-testi-container'>
@@ -106,7 +160,7 @@ function Testimonials(){
                     {people[3].testi}
                 </p>
             </div>
-            <div className='testimonial-container'>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate5': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[4].img}/>
                     <div className='inner-profile-testi-container'>
@@ -118,7 +172,7 @@ function Testimonials(){
                     {people[4].testi}
                 </p>
             </div>
-            <div className='testimonial-container'>
+            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate6': ''}`}>
                 <div className='profile-testi-container'>
                     <img className='profile-img' src={people[5].img}/>
                     <div className='inner-profile-testi-container'>

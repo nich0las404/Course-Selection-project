@@ -1,6 +1,6 @@
 function ContactFooter(){
     return (
-        <div className="contact-container">
+        <div id="contact-container" className="contact-container">
             <p>© 2024 Nol Wonders. All rights reserved.</p>
             <div className="socials-container">
                 <div className="social">
