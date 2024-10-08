@@ -429,18 +429,18 @@
   }
 }
 .autoBlur{
-  animation: autoBlurring both;
+  animation: autoBlurring both !important;
   animation-timeline: view();
 }
 @keyframes autoBlurring {
   0%{
-    filter: blur(20px)
+    filter: blur(20px);
   }
   40%,60%{
-    filter: blur(0px)
+    filter: blur(0px) !important;
   }
   100%{
-    filter: blur(20px)
+    filter: blur(20px);
   }
 };
 /* TESTIMONIALS */
@@ -1078,7 +1078,7 @@ span:nth-of-type(2) em {
   align-items: center;
   justify-content: center;
   margin: 5vw 0;
-  margin-bottom: 8vw;
+  margin-bottom: clamp(25px, 7vw, 50px);
   text-decoration: none;
 }
 .link-to-course-div{
