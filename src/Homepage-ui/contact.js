@@ -1,7 +1,7 @@
 function ContactFooter(){
     return (
         <div id="contact-container" className="contact-container">
-            <p>© 2024 Nol Wonders. All rights reserved.</p>
+            <p className="copyright-text">© 2024 Nol Wonders. All rights reserved.</p>
             <div className="socials-container">
                 <div className="social">
                     <a target="_blank" href="https://www.instagram.com/nicholashartono07/" className="social-link">
