@@ -26,11 +26,9 @@ function HeroPage(){
     }, []);
     return (
         <div id="hero-section" className="hero-page">
-            <div className="inner-hero-page">
             <div className="gif-background hero-background-animation"></div>
             <div className="title-container">
                 <h1 className="title">{heroTitle}<span className="title-span"> here</span></h1>
-            </div>
             </div>
             <div className="btn-container">
                 <button class="btn" onClick={() => navigate('/main')}>

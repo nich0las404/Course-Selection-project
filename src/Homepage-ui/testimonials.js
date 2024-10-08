@@ -109,12 +109,16 @@ function Testimonials(){
         <div className="testi-title-container">
             <div className="short-horizontal-line short-hori-line2"></div>
             <div className="line line2"></div>
-            <h1 className="testi-title" ref={ref}>{testiTitleText}</h1>
+            <div className='inner-testi-title-container'>
+              <h1 className="testi-title" ref={ref}>
+                {testiTitleText}
+              </h1>
+            </div>
 
             <div className='testimonials-container' ref={testiContainerRef}>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate1': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[0].img}/>
+                    <img className='profile-img' src={people[0].img} alt={people[0].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[0].name}</h4>
                         <p className='testi-job'>{people[0].job}</p>
@@ -126,7 +130,7 @@ function Testimonials(){
             </div>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate2': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[1].img}/>
+                    <img className='profile-img' src={people[1].img} alt={people[1].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[1].name}</h4>
                         <p className='testi-job testi-color1'>{people[1].job}</p>
@@ -138,7 +142,7 @@ function Testimonials(){
             </div>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate3': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[2].img}/>
+                    <img className='profile-img' src={people[2].img} alt={people[2].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[2].name}</h4>
                         <p className='testi-job testi-color2'>{people[2].job}</p>
@@ -150,7 +154,7 @@ function Testimonials(){
             </div>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate4': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[3].img}/>
+                    <img className='profile-img' src={people[3].img} alt={people[3].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[3].name}</h4>
                         <p className='testi-job'>{people[3].job}</p>
@@ -162,7 +166,7 @@ function Testimonials(){
             </div>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate5': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[4].img}/>
+                    <img className='profile-img' src={people[4].img} alt={people[4].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[4].name}</h4>
                         <p className='testi-job testi-color1'>{people[4].job}</p>
@@ -174,7 +178,7 @@ function Testimonials(){
             </div>
             <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate6': ''}`}>
                 <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[5].img}/>
+                    <img className='profile-img' src={people[5].img} alt={people[5].name}/>
                     <div className='inner-profile-testi-container'>
                         <h4 className='testi-name'>{people[5].name}</h4>
                         <p className='testi-job testi-color2'>{people[5].job}</p>
