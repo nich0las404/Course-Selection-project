@@ -428,7 +428,7 @@
     transform: translateX(0);
   }
 }
-.autoBlur{
+/* .autoBlur{
   animation: autoBlurring both !important;
   animation-timeline: view();
 }
@@ -442,7 +442,8 @@
   100%{
     filter: blur(20px);
   }
-};
+}; */
+
 /* TESTIMONIALS */
 .inner-testi-title-container{
   width: 100%;
