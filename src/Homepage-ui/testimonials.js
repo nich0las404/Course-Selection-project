@@ -20,7 +20,7 @@ function Testimonials(){
             img: 'https://www.theodinproject.com/assets/success_stories/aron_fischer-a4073dd9.jpg',
             name: 'Aron Fischer',
             job: 'FrontEnd Developer',
-            testi: "\"The reason why TOP was perfect for me was on the one hand because in its' well-structured paths I found answers to the most difficult of all questions: Where should I start? What should I learn first? How well do I have to know certain technologies? Besides providing answers to those questions, having a great and supportive community, another point to stress is the flexibility of the curriculum. I was able to use my creativity to design and code the projects, and often further ideas were provided to help you figure out which feature to add next. Now, I reached what I wouldn't have thought possible when I started. I landed a job :D.\""
+            testi: "\"The reason why TOP was perfect for me was on the one hand because in its' well-structured paths I found answers to the most difficult of all questions: Where should I start? Now in my position in life, I wouldn't have thought it was possible when I started. Now I landed a job :D.\""
         },
         {
             img: 'https://d3njjcbhbojbot.cloudfront.net/api/utilities/v1/imageproxy/https://images.ctfassets.net/wp1lcwdav1p1/66DwUMt1tQTmR4q1JaHPdV/71cbdd4415999eecfcd899283086260c/Circle_Ryan.png?auto=format%2Ccompress&dpr=2&w=202&h=202&q=40',
@@ -49,10 +49,25 @@ function Testimonials(){
     ];
     // Animation section
     const [testiTitleText, setTestiTitleText] = useState('');
-    const [testiContainer, setTestiContainer] = useState(false);
-
     const ref = useRef(null);
-    const testiContainerRef = useRef(null);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [inTransition, setInTransition] = useState(false);
+
+    const incrementBtn = () => {
+      setInTransition(true); 
+      setTimeout(() => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % people.length);
+          setInTransition(false);
+      }, 300); 
+  };
+
+  const decrementBtn = () => {
+      setInTransition(true); 
+      setTimeout(() => {
+          setCurrentIndex((prevIndex) => (prevIndex - 1 + people.length) % people.length);
+          setInTransition(false);
+      }, 300); 
+  };
 
     useEffect(() => {
       const observerTitle = new IntersectionObserver((entries) => {
@@ -69,26 +84,9 @@ function Testimonials(){
         observerTitle.observe(ref.current);
       }
   
-      const observerTestiContainer = new IntersectionObserver((entries) => {
-        const entry = entries[0];
-        if (entry.isIntersecting && !testiContainer) {
-          setTestiContainer(true); // set to true when testimonials-container is visible
-          observerTestiContainer.unobserve(testiContainerRef.current);
-        }
-      }, {
-        threshold: 0.2
-      });
-  
-      if (testiContainerRef.current) {
-        observerTestiContainer.observe(testiContainerRef.current);
-      }
-  
       return () => {
         if (ref.current) {
           observerTitle.unobserve(ref.current);
-        }
-        if (testiContainerRef.current) {
-          observerTestiContainer.unobserve(testiContainerRef.current);
         }
       };
   
@@ -103,7 +101,8 @@ function Testimonials(){
         }
         setTimeout(() => textTypingEffect(text, i + 1), 80);
       }
-    }, [testiTitleText, testiContainer]);
+    }, [testiTitleText]);
+
     return(
         <div>
         <div className="testi-title-container">
@@ -114,81 +113,27 @@ function Testimonials(){
                 {testiTitleText}
               </h1>
             </div>
-
-            <div className='testimonials-container' ref={testiContainerRef}>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate1': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[0].img} alt={people[0].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[0].name}</h4>
-                        <p className='testi-job'>{people[0].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[0].testi}
-                </p>
+            <div className='outer-testimonials-container'>
+              <button onClick={decrementBtn} className='testimonial-btn decrement-testi-btn'>
+                <i class="gradient-icon fa-solid fa-arrow-left"></i>
+              </button>
+              {/* testimonials container */}
+            <div className='testimonials-container'>
+            <div className={`testimonial-container ${inTransition ? 'fade-out' : 'fade-in'}`}>
+                            <div className="profile-testi-container">
+                                <img className="profile-img" src={people[currentIndex].img} alt={people[currentIndex].name} />
+                                <div className="inner-profile-testi-container">
+                                    <h4 className="testi-name">{people[currentIndex].name}</h4>
+                                    <p className="testi-job">{people[currentIndex].job}</p>
+                                </div>
+                            </div>
+                            <p className="testi-text">{people[currentIndex].testi}</p>
+                        </div>
             </div>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate2': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[1].img} alt={people[1].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[1].name}</h4>
-                        <p className='testi-job testi-color1'>{people[1].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[1].testi}
-                </p>
+            <button onClick={incrementBtn} className='testimonial-btn increment-testi-btn'>
+            <i class="gradient-icon fa-solid fa-arrow-right"></i>
+            </button>
             </div>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate3': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[2].img} alt={people[2].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[2].name}</h4>
-                        <p className='testi-job testi-color2'>{people[2].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[2].testi}
-                </p>
-            </div>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate4': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[3].img} alt={people[3].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[3].name}</h4>
-                        <p className='testi-job'>{people[3].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[3].testi}
-                </p>
-            </div>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate5': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[4].img} alt={people[4].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[4].name}</h4>
-                        <p className='testi-job testi-color1'>{people[4].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[4].testi}
-                </p>
-            </div>
-            <div className={`testimonial-container ${testiContainer? 'testi-animate testi-animate6': ''}`}>
-                <div className='profile-testi-container'>
-                    <img className='profile-img' src={people[5].img} alt={people[5].name}/>
-                    <div className='inner-profile-testi-container'>
-                        <h4 className='testi-name'>{people[5].name}</h4>
-                        <p className='testi-job testi-color2'>{people[5].job}</p>
-                    </div>
-                </div>
-                <p className='testi-text'>
-                    {people[5].testi}
-                </p>
-            </div>
-          </div>
         </div>
         <div className='slider-container'>
               <ul className='slider'>

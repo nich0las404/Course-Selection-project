@@ -126,28 +126,28 @@ function CodingFacts(){
             <h1 className="why"><span className={`why-span ${hasAnimated ? 'animate' : ''}`} ref={ref}>{why}</span></h1>
             {/* facts */}
             <div className="autoBlur fact fact1" ref={fact1Ref}>
-                <i class={`fa-solid fa-people-group ${fact1Visible ? "iconLeft" : ""}`}></i>
+                <i class={`fa-solid gradient-icon fa-people-group ${fact1Visible ? "iconLeft" : ""}`}></i>
                 <div className={`inner-fact ${fact1Visible ? "fact-text-animate" : ""}`}>
                     <h1 className="fact-text text-left">Around <span className="gradient-text-color">{amountOfDev} million</span> software developers exist around the world</h1>
                     <p className="fact-subtext">2.9 million of those are from Indonesia</p>
                 </div>
             </div>
             <div className="autoBlur fact fact2" ref={fact2Ref}>
-                <i class={`fa-solid fa-arrow-trend-up ${fact2Visible ? "iconRight" : ""}`}></i>
+                <i class={`fa-solid gradient-icon fa-arrow-trend-up ${fact2Visible ? "iconRight" : ""}`}></i>
                 <div className={`inner-fact ${fact2Visible ? "fact-text-animate" : ""}`}>
                     <h1 className="fact-text text-left">the tech market is expected to create around <span className="gradient-text-color">{techJobs} million</span> jobs</h1>
                     <p className="fact-subtext">92% of all stable jobs worldwide require some form of digital skills​</p>
                 </div>
             </div>
             <div className="autoBlur fact fact3" ref={fact3Ref}>
-            <i class={`fa-solid fa-graduation-cap ${fact3Visible ? "iconLeft" : ""}`}></i>
+            <i class={`fa-solid gradient-icon fa-graduation-cap ${fact3Visible ? "iconLeft" : ""}`}></i>
                 <div className={`inner-fact  ${fact3Visible ? "fact-text-animate" : ""}`}>
                     <h1 className="fact-text text-left">It takes <span className="gradient-text-color">{studyDuration} months</span> to 2 years to become a programmer</h1>
                     <p className="fact-subtext">It varies depending on the consistency, resource, and dedication of the person​</p>
                 </div>
             </div>
             <div className="autoBlur fact fact2" ref={fact4Ref}>
-            <i class={`fa-solid fa-sack-dollar ${fact4Visible ? "iconRight" : ""}`}></i>
+            <i class={`fa-solid gradient-icon fa-sack-dollar ${fact4Visible ? "iconRight" : ""}`}></i>
                 <div className={`inner-fact ${fact4Visible ? "fact-text-animate" : ""}`}>
                     <h1 className="fact-text text-left">Salary reaching <span className="gradient-text-color">Rp{Number(salary).toLocaleString()}</span> Yearly</h1>
                     <p className="fact-subtext">This is 1.7 to 3.5 times higher than the average minimum wage worker in Indonesia​</p>
