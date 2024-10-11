@@ -1020,22 +1020,21 @@ span:nth-of-type(2) em {
 }
 .exit-course-btn{
   position: fixed;
-  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
   top: 20px;
   left: 20px;
   transition: 0.3s ease;
   border: none;
-  background: black;
+  background: linear-gradient(45deg, var(--color-light-blue), var(--color-light-purple2));
   backdrop-filter: blur(10px);
-  padding: 2px 6px;
+  padding: clamp(2px, 1.5vw, 4px) clamp(6px, 1.5vw, 8px);
   border-radius: 50%;
   z-index: 1000;
-}
-.exit-course-i{
-  color: white;
+  color: rgb(255, 255, 255);
 }
 .exit-course-btn:hover{
   scale: 0.9;
+  color: rgb(220, 220, 220)
 }
 .course-details{
   margin: 0 clamp(2vw, 6vw, 4vw);
